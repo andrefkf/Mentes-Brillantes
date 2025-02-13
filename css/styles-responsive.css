@@ -1,0 +1,689 @@
+@import url('https://fonts.googleapis.com/css2?family=Graduate&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
+}
+
+img {
+    max-width: 100%; /* Asegura que las imágenes no excedan el ancho de su contenedor */
+}
+
+@keyframes fondoElipseIzq {
+    0%, 100% {
+        clip-path: ellipse(50% 50% at 0% 0%);
+    }
+    50% {
+        clip-path: ellipse(80% 70% at 0% 0%);
+    }
+}
+
+body {
+    background-color: #48CFAE; /* Color de fondo de la página */
+    margin: 0;
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #358B7E; /* Color de fondo del pseudo-elemento */
+    z-index: -1; /* Asegura que esté detrás del contenido */
+    top: -15%;
+    animation: fondoElipseIzq 3s ease-in-out infinite; /* Animación de fondo */
+}
+
+/*menu*/
+nav {
+    justify-content: space-between;
+    background-color: rgba(102, 174, 160, 0.5); /* Fondo negro semitransparente */
+    padding: 10px; /* Espaciado interior del menú */
+    position: fixed; /* Fijar el menú en la parte superior */
+    width: 100%; /* Ancho completo */
+    z-index: 1000; /* Capa z-index para asegurar que esté encima de otros elementos */
+    display: flex; /* Usar flexbox para el contenedor del menú */
+    align-items: center;
+    border-radius: 30px; /* Bordes redondeados */
+    transition: top 0.3s; /* Transición suave para el movimiento del menú */
+    top: 0; /* Posición inicial en la parte superior */
+}
+
+nav .left img {
+    height: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
+    width: auto; /* Mantener las proporciones de la imagen */
+}
+
+nav.hidden {
+    top: -80px; /* Altura del menú para ocultarlo fuera de la vista */
+}
+
+nav .left, nav .right {
+    display: flex;
+}
+
+nav ul {
+    list-style-type: none; /* Sin viñetas en la lista */
+    margin: 0;
+    padding: 1;
+    font-family: "Graduate", serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+nav ul.left li {
+    display: inline; /* Elementos en línea */
+    margin-right: 20px; /* Espacio entre elementos */
+    font-size: 20px;
+    font-family: "Graduate", serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+nav ul.right li {
+    margin-left: 20px; /* Espacio a la izquierda de los elementos */
+    font-size: 20px;
+    font-family: "Graduate", serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+nav ul li a {
+    color: #000000; /* Color del texto de los enlaces */
+    text-decoration: none; /* Sin subrayado en los enlaces */
+    font-family: "Graduate", serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 24px; /* Tamaño de fuente */
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+.menu a {
+    position: relative;
+    color: #333; /* Color del texto enlaces */
+    text-decoration: none; /* Sin subrayado en los enlaces */
+    font-size: 18px; /* Tamaño de fuente */
+    margin-right: 20px; /* Espacio entre elementos del menú */
+    transition: color 0.3s ease; /* Transición suave para el color del texto */
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #ffffff; /* Color de la línea debajo del enlace */
+    transition: width 0.3s ease, right 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%; /* Expande la línea al pasar el mouse */
+    right: 0;
+}
+
+.menu a:hover {
+    color: #ffffff; /* Color del texto al pasar el mouse */
+}
+
+/* Estilos específicos para el enlace con la clase left */
+.menu .left {
+    position: relative;
+    font-size: 24px; /* Tamaño de fuente para el nombre */
+    margin-left: 20px; /* Espacio a la izquierda del nombre */
+}
+
+.menu .left::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    left: 0;
+    bottom: -5px; /* Mueve la línea debajo del nombre */
+    background: #ffffff; /* Color de la línea */
+    transition: width 0.3s ease;
+}
+
+.menu .left:hover::after {
+    width: 100%; /* Expande la línea al pasar el mouse */
+}
+
+.menu .left:hover {
+    color: #ffffff; /* Color del texto al pasar el mouse sobre el nombre */
+}
+
+/* Estilo para el section */
+#presentation {
+    display: flex;
+    flex-direction: column; /* Coloca los elementos en columna */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    padding: 10px 10px; /* Ajusta el espacio arriba y abajo */
+    margin-top: 80px; /* Mueve el section más hacia abajo */
+    background: none; /* Elimina el fondo */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo para el título */
+.titulo {
+    text-align: center; /* Centra el texto */
+    font-family: "Graduate", serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 45px; /* Tamaño de fuente */
+    background: linear-gradient(to top, #333 0%, #25544D 50%); /* Gradiente de fondo */
+    background-clip: text; /* Clip del fondo en el texto */
+    -webkit-background-clip: text; /* Clip del fondo en el texto para WebKit */
+    -webkit-text-fill-color: transparent; /* Color del texto transparente */
+    line-height: 1.5; /* Altura de línea */
+    animation: fadeInUp 1s ease-out; /* Animación de entrada */
+}
+
+/* Estilo para el texto */
+#presentation .content-text .text {
+    font-family: "Graduate", serif;
+    font-weight: 800;
+    font-size: 35px; /* Tamaño de fuente */
+    color: #25544D; 
+    max-width: 800px; /* Opcional, ajusta el tamaño del texto */
+    line-height: 1.5; /* Altura de línea */
+    animation: fadeInUp 1s ease-out; /* Animación de entrada */
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0; /* Comienza invisible */
+        transform: translateY(20px); /* Se mueve hacia abajo */
+    }
+    100% {
+        opacity: 1; /* Se vuelve visible */
+        transform: translateY(0); /* Regresa a su posición original */
+    }
+}
+
+/* Animación de salida */
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1; /* Comienza visible */
+        transform: translateY(0); /* Se mantiene en su posición */
+    }
+    100% {
+        opacity: 0; /* Se vuelve invisible */
+        transform: translateY(20px); /* Se mueve hacia abajo */
+    }
+}
+
+/* Estilo base para ocultar los elementos */
+.hidden {
+    opacity: 0; /* Invisible */
+    animation: fadeOutDown 1s ease-out forwards; /* Animación de salida */
+    transform: translateY(20px); /* Se mueve hacia abajo */
+}
+
+/* Cuando la sección es visible, los elementos se muestran con animación de entrada */
+.visible {
+    animation: fadeInUp 1s ease-out forwards; /* Animación de entrada */
+}
+
+/* Estilo para la salida (cuando la sección deja de estar visible) */
+.hide {
+    animation: fadeOutDown 1s ease-in forwards; /* Animación de salida */
+}
+
+/* Carrusel */
+.carousel-container {
+    width: 100%; /* Ancho completo */
+    overflow: hidden; /* Oculta el desbordamiento */
+    position: relative;
+    margin-top: 50px; /* Ajuste para no tapar el menú */
+}
+
+.carousel {
+    display: flex; /* Usar flexbox para el carrusel */
+    animation: slideInfinite 15s linear infinite; /* Carrusel infinito */
+}
+
+.carousel-item {
+    flex: 0 0 16.66%; /* Cada item ocupa un 16.66% del ancho */
+    display: flex; /* Usar flexbox para los items */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    padding: 20px; /* Espaciado interior */
+    flex-shrink: 0; /* Evita que las cartas se compriman */
+}
+
+@keyframes slideInfinite {
+  0% {
+    transform: translateX(0); /* Comienza en la posición original */
+  }
+  100% {
+    transform: translateX(-100%); /* Mueve todo el carrusel hacia la izquierda */
+  }
+}
+
+/* Cartas más anchas y con menos separación */
+.cart {
+    position: relative;
+    display: flex; /* Usar flexbox para las cartas */
+    align-items: flex-end; /* Alinear al final */
+    width: 500px; /* Ancho de las cartas */
+    height: 650px; /* Hacemos que las cartas sean más altas */
+    padding: 30px 25px; /* Espaciado interior */
+    background: #fff; /* Fondo blanco */
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5); /* Sombra */
+    border-radius: 45px; /* Bordes redondeados */
+    margin-right: 5px; /* Menos separación entre las cartas */
+    transition: transform 0.3s ease-in-out; /* Transición suave para el hover */
+}
+
+/* Efecto hover para las cartas */
+.cart:hover {
+    transform: translateY(-20px); /* Se eleva al pasar el mouse */
+}
+
+/* Efecto de gradiente al pasar el mouse */
+.cart:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(72, 207, 174, 0.5), rgba(53, 139, 126, 0.5)); /* Gradiente */
+    transition: all 0.5s; /* Transición suave */
+    opacity: 0; /* Invisible */
+    border-radius: 40px; /* Bordes redondeados */
+}
+
+.cart:hover:after {
+    opacity: 1; /* Se vuelve visible al pasar el mouse */
+}
+
+/* Hacer que la imagen se ajuste bien dentro de la carta */
+.cart > img {
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    object-fit: cover; /* Para que la imagen se ajuste correctamente dentro de la carta */
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 40px; /* Bordes redondeados */
+}
+
+/* Mostrar la información solo cuando se pasa el ratón */
+.cart .info {
+    position: relative;
+    z-index: 3; /* Asegura que esté encima */
+    opacity: 0; /* Invisible */
+    transform: translateY(30px); /* Se mueve hacia abajo */
+    transition: all 0.5s; /* Transición suave */
+}
+
+.cart:hover .info {
+    opacity: 1; /* Se vuelve visible al pasar el mouse */
+    transform: translateY(0px); /* Regresa a su posición original */
+}
+
+/* Estilo del texto */
+.texto {
+    letter-spacing: 1px; /* Espaciado entre letras */
+    font-family: "Graduate", serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 1.25rem; /* Tamaño de fuente */
+    margin: 10px 0 25px; /* Margen */
+    line-height: 130%; /* Altura de línea */
+    color: rgba(255, 255, 255, 1); /* Color del texto */
+    text-align: left; /* Texto justificado */
+}
+
+/* Estilo de los botones */
+.btn {
+    text-decoration: none; /* Sin subrayado en los enlaces */
+    padding: 0.5rem 1rem; /* Espaciado interior */
+    background: #48CFAE; /* Color de fondo */
+    color: #25544D; /* Color del texto */
+    font-family: "Graduate", serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: 1.30rem; /* Tamaño de fuente */
+    border-radius: 50px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: all 0.3s ease-in; /* Transición suave */
+}
+
+.btn:hover {
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5); /* Sombra al pasar el mouse */
+    background-color: rgb(43, 131, 109); /* Color de fondo al pasar el mouse */
+    color: #000; /* Color del texto al pasar el mouse */
+}
+
+/* Estilo principal del footer */
+footer {
+  margin-top: 50px; /* Margen superior */
+  background-color: #358B7E; /* Color de fondo */
+  border-radius: 180px 1px 0 0; /* Bordes redondeados */
+  padding: 40px 0; /* Espaciado interior */
+  color: white; /* Color del texto */
+  text-align: center; /* Centra el texto */
+  width: 100%; /* Ancho completo */
+  position: relative;
+  bottom: 0;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap; /* Hacer que los elementos se ajusten en pantallas pequeñas */
+  justify-content: space-between; /* Espacio entre elementos */
+  max-width: 1200px; /* Ancho máximo */
+  margin: 0 auto; /* Centra el contenedor */
+  padding: 0 20px; /* Espaciado interior */
+}
+
+.logo-section {
+  flex: 1; /* Toma un tercio del espacio en pantallas grandes */
+  text-align: left; /* Alinea a la izquierda */
+  display: flex;
+  padding-top: 10px; /* Espaciado superior */
+}
+
+.logo {
+  width: 350px; /* Ancho de la imagen del logo */
+  height: auto; /* Altura automática */
+  margin-left: -30px; /* Margen a la izquierda */
+}
+
+.social {
+  margin-top: 10px; /* Margen superior */
+  display: flex; /* Usar flexbox para los iconos sociales */
+  padding-right: 10px; /* Espaciado a la derecha */
+  margin-right: 30px; /* Margen a la derecha */
+}
+
+.icon {
+  max-width: 300px; /* Ancho máximo de los iconos */
+  aspect-ratio: 4/2; /* Relación de aspecto */
+  object-fit: contain; /* Ajusta la imagen dentro del contenedor */
+}
+
+.icon:hover {
+    margin-top: -20px; /* Se eleva al pasar el mouse */
+    width: 350px; /* Ancho al pasar el mouse */
+    opacity: 0.55; /* Opacidad al pasar el mouse */
+}
+
+.copyright {
+  margin-top: 20px; /* Separar el copyright del contenido */
+  font-size: 25px; /* Tamaño de fuente */
+  font-family: "Graduate", serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #25544D; /* Color del texto */
+  position: absolute; /* Posición absoluta */
+  bottom: 0; /* Al fondo */
+  width: 100%; /* Ancho completo */
+  text-align: center; /* Centra el texto */
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    /* Ajustes para el menú */
+    nav {
+        padding: 12px;
+        border-radius: 30px;
+    }
+
+    nav .left img {
+        height: 45px;
+    }
+
+    /* Ajustes para la sección de presentación */
+    #presentation {
+        margin: 80px 20px 0;
+        padding: 25px;
+        border-radius: 30px;
+    }
+
+    .titulo {
+        font-size: 32px;
+        margin-bottom: 20px;
+        line-height: 1.3;
+    }
+
+    .text {
+        font-size: 18px;
+        line-height: 1.6;
+        padding: 0 15px;
+    }
+
+    /* Ajustes mejorados para el carrusel en móviles */
+    .carousel-container {
+        margin: 20px 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .carousel {
+        gap: 10px;
+        animation: slideInfinite 30s linear infinite; /* Animación más lenta */
+    }
+
+    .carousel-item {
+        flex: 0 0 90%; /* Ocupa casi todo el ancho */
+        padding: 5px;
+        margin: 0 5px;
+    }
+
+    .cart {
+        width: 100%; /* Ancho completo del contenedor */
+        height: 450px; /* Altura fija más pequeña */
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+    .cart > img {
+        height: 55%;
+        object-fit: cover;
+    }
+
+    .cart .info {
+        height: 45%;
+        padding: 15px;
+        opacity: 1;
+        transform: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+
+    .texto {
+        font-size: 1rem;
+        line-height: 1.3;
+        margin-bottom: 10px;
+        color: #25544D;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+        display: inline-block;
+        margin-top: 5px;
+        width: 100%; /* Botón a todo el ancho */
+        text-align: center;
+    }
+
+    /* Mejoras en el desplazamiento táctil */
+    .carousel-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+    }
+
+    .carousel-item {
+        scroll-snap-align: center;
+    }
+}
+
+@media (max-width: 500px) {
+    /* Ajustes específicos para móviles */
+    nav {
+        padding: 10px;
+    }
+
+    nav .left img {
+        height: 40px;
+    }
+
+    #presentation {
+        margin: 70px 15px 0;
+        padding: 20px;
+    }
+
+    .titulo {
+        font-size: 28px;
+    }
+
+    .text {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    /* Ajustes para el carrusel */
+    .carousel-container {
+        margin: 30px 10px;
+    }
+
+    .carousel-item {
+        flex: 0 0 90%;
+        padding: 5px;
+    }
+
+    .cart {
+        aspect-ratio: 2/3;
+    }
+
+    .cart > img {
+        height: 55%;
+    }
+
+    .cart .info {
+        padding: 15px;
+    }
+
+    .texto {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    /* Ajustes para el footer */
+    footer {
+        padding: 30px 0 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .logo-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .logo {
+        width: 180px;
+        margin-bottom: 20px;
+    }
+
+    .social {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin: 15px 0;
+    }
+
+    .icon {
+        width: 35px;
+        height: 35px;
+        margin: 0 10px;
+    }
+
+    .copyright {
+        position: relative;
+        font-size: 16px;
+        margin-top: 20px;
+        padding: 10px 0;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 320px) {
+    #presentation {
+        margin: 65px 10px 0;
+        padding: 15px;
+    }
+
+    .titulo {
+        font-size: 24px;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+
+    .carousel-item {
+        flex: 0 0 95%;
+    }
+
+    .cart {
+        aspect-ratio: 1/1.5;
+    }
+
+    .cart .info {
+        padding: 12px;
+    }
+
+    .texto {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Mejoras en la interacción táctil */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn, .icon {
+    touch-action: manipulation;
+}
